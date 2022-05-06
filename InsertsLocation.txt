@@ -1,0 +1,2 @@
+db.Municipality.insertOne({
+LocationAddress: "Finlandsgade 22", LocationName: "Shannon bord 4", Capacity: 8})
