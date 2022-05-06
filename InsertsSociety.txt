@@ -1,0 +1,2 @@
+db.Municipality.Society({
+CVR: 1927574, Activity: "Lektier", MemberCount: 4})
