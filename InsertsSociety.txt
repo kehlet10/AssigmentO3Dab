@@ -1,2 +1,2 @@
-db.Municipality.Society({
+db.Municipality.insertOne({ Type: "Society",
 CVR: 1927574, Activity: "Lektier", MemberCount: 4})
