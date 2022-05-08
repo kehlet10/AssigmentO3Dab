@@ -1,0 +1,513 @@
+[{
+  "_id": {
+    "$oid": "6274e076564d2b33bc516e65"
+  },
+  "Type": "Member",
+  "Name": "Andreas",
+  "Address": "Mejlgade 103",
+  "Cpr": 190298,
+  "Society": {
+    "$oid": "6274ee3f564d2b33bc516e6b"
+  }
+},{
+  "_id": {
+    "$oid": "6274e076564d2b33bc516e66"
+  },
+  "Type": "Member",
+  "Name": "Daniel",
+  "Address": "Mejlgade 102",
+  "Cpr": 190297
+},{
+  "_id": {
+    "$oid": "6274e285564d2b33bc516e67"
+  },
+  "Type": "Location",
+  "LocationAddress": "Finlandsgade 22",
+  "LocationName": "Shannon bord 4",
+  "Capacity": 8,
+  "Booked By": [
+    {
+      "$oid": "6274ee3f564d2b33bc516e6b"
+    }
+  ],
+  "Timeslots": [
+    {
+      "$oid": "62779f887833b25ff0537321"
+    },
+    {
+      "$oid": "62779f887833b25ff0537322"
+    },
+    {
+      "$oid": "62779f887833b25ff0537323"
+    },
+    {
+      "$oid": "62779f887833b25ff0537324"
+    },
+    {
+      "$oid": "62779f887833b25ff0537325"
+    },
+    {
+      "$oid": "62779f887833b25ff0537326"
+    },
+    {
+      "$oid": "62779f887833b25ff0537327"
+    },
+    {
+      "$oid": "62779f887833b25ff0537328"
+    },
+    {
+      "$oid": "62779f887833b25ff0537329"
+    },
+    {
+      "$oid": "62779f887833b25ff053732a"
+    },
+    {
+      "$oid": "62779f887833b25ff053732b"
+    },
+    {
+      "$oid": "62779f887833b25ff053732c"
+    },
+    {
+      "$oid": "62779f887833b25ff053732d"
+    },
+    {
+      "$oid": "62779f887833b25ff053732e"
+    },
+    {
+      "$oid": "62779f887833b25ff053732f"
+    },
+    {
+      "$oid": "62779f887833b25ff0537330"
+    },
+    {
+      "$oid": "62779f887833b25ff0537331"
+    },
+    {
+      "$oid": "62779f887833b25ff0537332"
+    },
+    {
+      "$oid": "62779f887833b25ff0537333"
+    },
+    {
+      "$oid": "62779f887833b25ff0537334"
+    },
+    {
+      "$oid": "62779f887833b25ff0537335"
+    },
+    {
+      "$oid": "62779f887833b25ff0537336"
+    },
+    {
+      "$oid": "62779f887833b25ff0537337"
+    },
+    {
+      "$oid": "62779f887833b25ff0537338"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6274ee3f564d2b33bc516e6b"
+  },
+  "Type": "Society",
+  "CVR": 1927574,
+  "Activity": "Lektier",
+  "MemberCount": 2,
+  "Members": [
+    {
+      "$oid": "6274e076564d2b33bc516e66"
+    },
+    {
+      "$oid": "6274e076564d2b33bc516e65"
+    }
+  ],
+  "ChairmanID": {
+    "$oid": "6274e076564d2b33bc516e65"
+  }
+},{
+  "_id": {
+    "$oid": "6274ef7f9bddab45e0a5f693"
+  },
+  "Type": "Key",
+  "LocationId": {
+    "$oid": "6274e285564d2b33bc516e67"
+  },
+  "MemberId": {
+    "$oid": "6274e076564d2b33bc516e65"
+  }
+},{
+  "_id": {
+    "$oid": "62779dc47833b25ff053731f"
+  },
+  "Type": "Society",
+  "CVR": 192857,
+  "Activity": "Fodbold",
+  "MemberCount": 6
+},{
+  "_id": {
+    "$oid": "62779df27833b25ff0537320"
+  },
+  "Type": "Society",
+  "CVR": 192857,
+  "Activity": "Armlægning",
+  "MemberCount": 1
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff0537321"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651795200000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651798800000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff0537322"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651798800000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651802400000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff0537323"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651802400000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651806000000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff0537324"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651806000000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651809600000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff0537325"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651809600000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651813200000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff0537326"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651813200000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651816800000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff0537327"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651816800000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651820400000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff0537328"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651820400000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651824000000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff0537329"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651824000000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651827600000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff053732a"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651827600000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651831200000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff053732b"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651831200000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651834800000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff053732c"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651834800000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651838400000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff053732d"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651838400000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651842000000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff053732e"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651842000000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651845600000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff053732f"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651845600000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651849200000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff0537330"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651849200000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651852800000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff0537331"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651852800000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651856400000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff0537332"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651856400000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651860000000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff0537333"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651860000000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651863600000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff0537334"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651863600000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651867200000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff0537335"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651867200000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651870800000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff0537336"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651870800000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651874400000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff0537337"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651874400000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651878000000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62779f887833b25ff0537338"
+  },
+  "Type": "TimeSlot",
+  "From": {
+    "$date": {
+      "$numberLong": "1651878000000"
+    }
+  },
+  "To": {
+    "$date": {
+      "$numberLong": "1651881600000"
+    }
+  }
+}]
