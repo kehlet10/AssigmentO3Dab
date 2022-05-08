@@ -1,0 +1,58 @@
+[
+  {
+    "_id": {
+      "$oid": "6274e076564d2b33bc516e65"
+    },
+    "Type": "Member",
+    "Name": "Andreas",
+    "Address": "Mejlgade 103",
+    "Cpr": 190298,
+    "Society": {
+      "$oid": "6274ee3f564d2b33bc516e6b"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6274e076564d2b33bc516e66"
+    },
+    "Type": "Member",
+    "Name": "Daniel",
+    "Address": "Mejlgade 102",
+    "Cpr": 190297
+  },
+  {
+  "_id": {
+    "$oid": "6274ee3f564d2b33bc516e6b"
+  },
+  "Type": "Society",
+  "CVR": 1927574,
+  "Activity": "Lektier",
+  "MemberCount": 2,
+  "Members": [
+    {
+      "$oid": "6274e076564d2b33bc516e66"
+    },
+    {
+      "$oid": "6274e076564d2b33bc516e65"
+    }
+  ],
+  "ChairmanID": {
+    "$oid": "6274e076564d2b33bc516e65"
+  }
+},{
+  "_id": {
+    "$oid": "62779dc47833b25ff053731f"
+  },
+  "Type": "Society",
+  "CVR": 192857,
+  "Activity": "Fodbold",
+  "MemberCount": 6
+},{
+  "_id": {
+    "$oid": "62779df27833b25ff0537320"
+  },
+  "Type": "Society",
+  "CVR": 192857,
+  "Activity": "Armlægning",
+  "MemberCount": 1
+}]
