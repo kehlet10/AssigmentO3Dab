@@ -6,16 +6,25 @@ using MongoDB.Driver.GridFS;
 using MongoDB.Driver.Linq;
 using System;
 using System.Collections.Generic;
-using O3DAB.Classes;
-using O3DAB.Service;
+using O3DAB.Services;
 
 namespace O3DAB
 {
     public class Program
     {
         static void Main(string[] args)
-        {           
+        {
+
+            //var locationService = new LocationService();
+            var service1 = new Service();
+
+            SeedData(service1);
+            
+
             {
+                            
+
+
                 /*
                 var connectionString = "mongodb://localhost:27017";
                 var dbName = "O3MongoDbMunicipality";
@@ -152,6 +161,35 @@ namespace O3DAB
         
         }
 
+        private static void SeedData(Service service)
+        {
+            Location location1 = new Location()
+            {
+                LocationName = "Shannon 003B",
+                LocationAddress = "Finlandsgade 22",
+                Capacity = 60,
+            };
+            service.AddLocation(location1);
+            Console.WriteLine(location1.Id);
+
+            Member member1 = new Member()
+            {
+                MemberName = "Michelle",
+                MemberAddress = "Precipice of Fate",
+                Cpr = "1234567890"
+            };
+            service.AddMember(member1);
+            Console.WriteLine(member1.MemberName);
+            
+
+            Key key1 = new Key()
+            {
+                LocationId = service.GetLocation(location1.Id).Id,
+            };
+            service.AddKey(key1);
+            Console.WriteLine(key1.LocationId);
+
+        }
     }
 
 }
