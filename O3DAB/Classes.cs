@@ -5,7 +5,6 @@ using MongoDB.Driver.GridFS;
 using MongoDB.Driver.Linq;
 using MongoDB.Bson.Serialization.Attributes;
 
-
 namespace O3DAB
 {
     public class Location
@@ -33,9 +32,7 @@ namespace O3DAB
         public DateTime From { get; set; }
         [BsonElement("To")]
         public DateTime To { get; set; }
-
     }
-
     public class Key
     {
         [BsonId]
@@ -44,7 +41,6 @@ namespace O3DAB
         [BsonElement("LocationId")]
         public ObjectId LocationId { get; set; }
     }
-
     public class Member
     {
         [BsonId]
@@ -57,7 +53,6 @@ namespace O3DAB
         [BsonElement("CPR")]
         public string Cpr { get; set; }
     }
-
     public class Society
     {
         [BsonId]

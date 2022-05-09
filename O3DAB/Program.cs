@@ -14,13 +14,8 @@ namespace O3DAB
     {
         static void Main(string[] args)
         {
-
-            //var locationService = new LocationService();
             var service1 = new Service();
-
             SeedData(service1);
-            
-
             {
                             
 
@@ -160,7 +155,6 @@ namespace O3DAB
             }
         
         }
-
         private static void SeedData(Service service)
         {
             Location location1 = new Location()
@@ -180,7 +174,6 @@ namespace O3DAB
             };
             service.AddMember(member1);
             Console.WriteLine(member1.MemberName);
-            
 
             Key key1 = new Key()
             {
@@ -188,7 +181,6 @@ namespace O3DAB
             };
             service.AddKey(key1);
             Console.WriteLine(key1.LocationId);
-
         }
     }
 
