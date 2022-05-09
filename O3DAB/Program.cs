@@ -174,13 +174,15 @@ namespace O3DAB
             };
             service.AddMember(member1);
             Console.WriteLine(member1.MemberName);
+            Console.WriteLine(location1.Id + " " + member1.Id);
 
             Key key1 = new Key()
             {
                 LocationId = service.GetLocation(location1.Id).Id,
+                MemberId = service.GetMember(member1.Id).Id
             };
             service.AddKey(key1);
-            Console.WriteLine(key1.LocationId);
+            Console.WriteLine(key1.LocationId + " " + key1.MemberId);
         }
     }
 
