@@ -14,10 +14,17 @@ namespace O3DAB
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Establishing connection to MongoDB...");
             var service1 = new Service();
+            Console.WriteLine("Seeding dummy data...");
             SeedData(service1);
+
+            Console.WriteLine("\nQuery for Locations in the Municipality:");
             service1.LocationQuery();
+            Console.WriteLine("\nQuery for all Societies in the Municipality:");
             service1.SocietyQuery();
+
+
         }
         private static void SeedData(Service service)
         {
@@ -79,8 +86,6 @@ namespace O3DAB
             service.AddMember(member2);
             service.AddMember(member3);
             service.AddMember(member4);
-            Console.WriteLine(member1.MemberName);
-            Console.WriteLine(location1.Id + " " + member1.Id);
             #endregion
             #region SocietySeed
             Society society1 = new Society()
@@ -119,7 +124,6 @@ namespace O3DAB
                 MemberId = service.GetMember(member1.Id).Id
             };
             service.AddKey(key1);
-            Console.WriteLine(key1.LocationId + " " + key1.MemberId);
             #endregion
             #region TimeSlotSeed
 
@@ -207,6 +211,17 @@ namespace O3DAB
             service.AddMemberToSociety(society2, member3);
 
             service.CreateBooking(location1, society1, _16to17);
+            service.CreateBooking(location2, society2, _16to17);
+            service.CreateBooking(location3, society3, _16to17);
+            service.CreateBooking(location2, society1, _17to18);
+
+            //Create booking that is unavailable
+            service.CreateBooking(location1, society2, _16to17);
+
+            //Should print 2 bookings
+            service.PrintBookings(society1);
+
+            service.PrintMemberBookings(member3);
         }
     }
 }

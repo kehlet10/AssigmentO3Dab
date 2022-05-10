@@ -141,15 +141,65 @@ namespace O3DAB.Services
                 UpdateSociety(society.Id, newSociety);
             }
         }
-
+        public bool CheckAvailability(Location location, TimeSlot timeSlot)
+        {
+            Location loc = _locations.Find<Location>(l => l.Id == location.Id).FirstOrDefault();
+            if ((location.Id == loc.Id) && loc.TimeForBooking.Any(tz => tz.Id == timeSlot.Id))
+            {
+                //Booking not available, return false
+                return false;
+            }
+            //The booking is available, return true
+            return true;
+        }
         public void CreateBooking(Location location, Society society, TimeSlot TimeForBooking)
         {
-            Location newLocation = GetLocation(location.Id);
+            var check = CheckAvailability(location, TimeForBooking);
+            if (check == false){
+                //Console.WriteLine("\nThe location is unavailable in the requested timespan.");
+            }
+            else
+            {
+                //Console.WriteLine("\nBooking...");
+                Location newLocation = GetLocation(location.Id);
 
-            newLocation.bookedBy.Add(society);
-            newLocation.TimeForBooking.Add(TimeForBooking);
+                newLocation.bookedBy.Add(society);
+                newLocation.TimeForBooking.Add(TimeForBooking);
 
-            UpdateLocation(location.Id, newLocation);
+                UpdateLocation(location.Id, newLocation);
+            }
         }
+        public void PrintBookings(Society society)
+        {
+            List<Location> locations = _locations.Find<Location>(l => l.bookedBy.Any(s => s.Id == society.Id)).ToList();
+            Console.WriteLine("\nCVR: " + society.Cvr + " has following bookings:");
+
+            foreach (Location l in locations)
+            {
+                List<TimeSlot> ts = l.TimeForBooking.ToList();
+                Console.WriteLine(l.LocationName);
+
+                var index = l.bookedBy.FindIndex(s => s.Id == society.Id);
+                for(int i = 0; i < l.TimeForBooking.Count; i++)
+                {
+                    if(i == index)
+                    {
+                        Console.WriteLine(l.TimeForBooking[i].From + " to " + l.TimeForBooking[i].To);
+                    }
+                }
+            }
+        }
+
+        public void PrintMemberBookings(Member member)
+        {
+            Console.WriteLine("\nQuery for member: " + member.MemberName + "'s bookings.");
+            List<Society> societies = _societies.Find<Society>(s => s.Members.Any(m => m.Id == member.Id)).ToList();
+
+            foreach (Society s2 in societies)
+            {
+                PrintBookings(s2);
+            }
+        }
+
     }
 }
