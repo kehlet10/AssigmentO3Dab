@@ -18,13 +18,6 @@ namespace O3DAB
             var service1 = new Service();
             Console.WriteLine("Seeding dummy data...");
             SeedData(service1);
-
-            Console.WriteLine("\nQuery for Locations in the Municipality:");
-            service1.LocationQuery();
-            Console.WriteLine("\nQuery for all Societies in the Municipality:");
-            service1.SocietyQuery();
-
-
         }
         private static void SeedData(Service service)
         {
@@ -217,6 +210,11 @@ namespace O3DAB
 
             //Create booking that is unavailable
             service.CreateBooking(location1, society2, _16to17);
+
+            Console.WriteLine("\nQuery for Locations in the Municipality:");
+            service.LocationQuery();
+            Console.WriteLine("\nQuery for all Societies in the Municipality:");
+            service.SocietyQuery();
 
             //Should print 2 bookings
             service.PrintBookings(society1);

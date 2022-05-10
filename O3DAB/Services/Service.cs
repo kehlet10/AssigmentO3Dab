@@ -155,7 +155,8 @@ namespace O3DAB.Services
         public void CreateBooking(Location location, Society society, TimeSlot TimeForBooking)
         {
             var check = CheckAvailability(location, TimeForBooking);
-            if (check == false){
+            if (check == false)
+            {
                 //Console.WriteLine("\nThe location is unavailable in the requested timespan.");
             }
             else
