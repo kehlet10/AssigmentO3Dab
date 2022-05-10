@@ -16,143 +16,6 @@ namespace O3DAB
         {
             var service1 = new Service();
             SeedData(service1);
-            {
-                            
-
-
-                /*
-                var connectionString = "mongodb://localhost:27017";
-                var dbName = "O3MongoDbMunicipality";
-                MongoClient client = null;
-                MongoServer server = null;
-                MongoDatabase db = null;
-
-                //Mapping classes for serialization
-                BsonClassMap.RegisterClassMap<Location>();
-                BsonClassMap.RegisterClassMap<TimeSlot>();
-                BsonClassMap.RegisterClassMap<Key>();
-                BsonClassMap.RegisterClassMap<Member>();
-                BsonClassMap.RegisterClassMap<Society>();
-
-                Console.WriteLine("We did it reddit");
-
-                //Client
-                try
-                {
-
-                    client = new MongoClient(connectionString);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error - Setting up client" + ex.Message);
-                }
-                //Server
-                try
-                {
-                    server = client.GetServer();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error - Setting up server" + ex.Message);
-                }
-                //Database
-                try
-                {
-                    db = server.GetDatabase(dbName);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error - Setting up Database" + ex.Message);
-                }
-                {
-                    
-                    //Setting up collections - Members
-                    try
-                    {
-                        var MemberCollection = db.GetCollection<BsonDocument>("Society");
-                        var Andreas = new BsonDocument
-                        {
-                            {"_id", new ObjectId() },
-                            {"Name", "Andreas" },
-                            {"Address", "Mejlgade 102" },
-                            {"CPR", 190297 }
-                        };
-                        var Daniel = new BsonDocument
-                        {
-                            {"_id", new ObjectId() },
-                            {"Name", "Daniel" },
-                            {"Address", "Mejlgade 103" },
-                            {"CPR", 190397 }
-                        };
-                        var Maggi = new BsonDocument
-                        {
-                            {"_id", new ObjectId() },
-                            {"Name", "Maggi" },
-                            {"Address", "Mejlgade 104" },
-                            {"CPR", 190497 }
-                        };
-
-                        var Michelle = new BsonDocument
-                        {
-                            {"_id", new ObjectId() },
-                            {"Name", "Michelle" },
-                            {"Address", "Mejlgade 105" },
-                            {"CPR", 190597 }
-                        };
-
-                        var Society = new BsonDocument
-                        {
-                            {"_id", new ObjectId() },
-                            {"CVR", 1927573 },
-                            {"Activity", "Armlægning" },
-                            {"MemberCount", 2},
-                            {"MemberId's", [{}, {2} ]}
-                        };
-
-                    var Members = new List<BsonDocument>();
-                        Members.Add(Andreas);
-                        Members.Add(Daniel);
-                        Members.Add(Maggi);
-                        Members.Add(Michelle);
-
-                        MemberCollection.InsertBatch(Members);
-                    }
-                    catch(Exception ex)
-                    {
-                        Console.WriteLine("Error - Setting up collection: " + ex.Message);
-                    }
-
-                    //Setting up collections - Society
-                   //try
-                   //{
-                   //    var MemberCollection = db.GetCollection<BsonDocument>("Society");
-                   //    var Society = new BsonDocument
-                   //    {
-                   //        {"_id", 1 },
-                   //        {"CVR", 1927573 },
-                   //        {"Activity", "Armlægning" },
-                   //        {"MemberCount", 2},
-                   //        {"MemberId's", [{1}, {2} ]}
-                   //    };
-                   //
-                   //
-                   //    var Members = new List<BsonDocument>();
-                   //    Members.Add(Andreas);
-                   //    Members.Add(Daniel);
-                   //    Members.Add(Maggi);
-                   //    Members.Add(Michelle);
-                   //
-                   //    MemberCollection.InsertBatch(Members);
-                   //}
-                   //catch (Exception ex)
-                   //{
-                   //    Console.WriteLine("Error - Setting up collection: " + ex.Message);
-                   //}
-                    
-                }
-                Console.WriteLine("Database name:" + db.Name);
-            */
-            }
             service1.LocationQuery();
             service1.SocietyQuery();
         }
@@ -164,21 +27,24 @@ namespace O3DAB
                 LocationName = "Shannon 003B",
                 LocationAddress = "Finlandsgade 22",
                 Capacity = 60,
-                bookedBy = new List<Society>()
+                bookedBy = new List<Society>(),
+                TimeForBooking = new List<TimeSlot>()
             };
             Location location2 = new Location()
             {
                 LocationName = "Shannon 009A",
                 LocationAddress = "Finlandsgade 22",
                 Capacity = 120,
-                bookedBy = new List<Society>()
+                bookedBy = new List<Society>(),
+                TimeForBooking = new List<TimeSlot>()
             };
             Location location3 = new Location()
             {
                 LocationName = "Shannon 003C",
                 LocationAddress = "Finlandsgade 22",
                 Capacity = 50,
-                bookedBy = new List<Society>()
+                bookedBy = new List<Society>(),
+                TimeForBooking = new List<TimeSlot>()
             };
             service.AddLocation(location1);
             service.AddLocation(location2);
@@ -222,14 +88,16 @@ namespace O3DAB
                 Cvr = "32345678",
                 Activity = "Armlægning",
                 MemberCount = 2,
-                ChairmanId = service.GetMember(member1.Id).Id
+                ChairmanId = new ObjectId(),
+                Members = new List<Member>()
             };
             Society society2 = new Society()
             {
                 Cvr = "1213215",
                 Activity = "Brolægning",
                 MemberCount = 3,
-                ChairmanId = service.GetMember(member2.Id).Id
+                ChairmanId = new ObjectId(),
+                Members = new List<Member>()
 
             };
             Society society3 = new Society()
@@ -237,7 +105,8 @@ namespace O3DAB
                 Cvr = "5423734",
                 Activity = "Fodbold",
                 MemberCount = 22,
-                ChairmanId = service.GetMember(member3.Id).Id
+                ChairmanId = new ObjectId(),
+                Members = new List<Member>()
             };
             service.AddSociety(society1);
             service.AddSociety(society2);
@@ -252,15 +121,92 @@ namespace O3DAB
             service.AddKey(key1);
             Console.WriteLine(key1.LocationId + " " + key1.MemberId);
             #endregion
+            #region TimeSlotSeed
+
+            TimeSlot _8to9 = new TimeSlot()
+            {
+                From = new TimeSpan(08, 00, 00),
+                To = new TimeSpan(09, 00, 00)
+            };
+            TimeSlot _9to10 = new TimeSlot()
+            {
+                From = new TimeSpan(09, 00, 00),
+                To = new TimeSpan(10, 00, 00)
+            };
+            TimeSlot _10to11 = new TimeSlot()
+            {
+                From = new TimeSpan(09, 00, 00),
+                To = new TimeSpan(10, 00, 00)
+            };
+            TimeSlot _11to12 = new TimeSlot()
+            {
+                From = new TimeSpan(11, 00, 00),
+                To = new TimeSpan(12, 00, 00)
+            };
+            TimeSlot _12to13 = new TimeSlot()
+            {
+                From = new TimeSpan(12, 00, 00),
+                To = new TimeSpan(13, 00, 00)
+            };
+            TimeSlot _13to14 = new TimeSlot()
+            {
+                From = new TimeSpan(13, 00, 00),
+                To = new TimeSpan(14, 00, 00)
+            };
+            TimeSlot _14to15 = new TimeSlot()
+            {
+                From = new TimeSpan(14, 00, 00),
+                To = new TimeSpan(15, 00, 00)
+            };
+            TimeSlot _15to16 = new TimeSlot()
+            {
+                From = new TimeSpan(15, 00, 00),
+                To = new TimeSpan(16, 00, 00)
+            };
+            TimeSlot _16to17 = new TimeSlot()
+            {
+                From = new TimeSpan(16, 00, 00),
+                To = new TimeSpan(17, 00, 00)
+            };
+            TimeSlot _17to18 = new TimeSlot()
+            {
+                From = new TimeSpan(17, 00, 00),
+                To = new TimeSpan(18, 00, 00)
+            };
+            TimeSlot _18to19 = new TimeSlot()
+            {
+                From = new TimeSpan(18, 00, 00),
+                To = new TimeSpan(19, 00, 00)
+            };
+            TimeSlot _19to20 = new TimeSlot()
+            {
+                From = new TimeSpan(19, 00, 00),
+                To = new TimeSpan(20, 00, 00)
+            };
 
 
-            Location newLocation = service.GetLocation(location1.Id);
+            service.AddTimeSlot(_8to9);
+            service.AddTimeSlot(_9to10);
+            service.AddTimeSlot(_10to11);
+            service.AddTimeSlot(_11to12);
+            service.AddTimeSlot(_12to13);
+            service.AddTimeSlot(_13to14);
+            service.AddTimeSlot(_14to15);
+            service.AddTimeSlot(_15to16);
+            service.AddTimeSlot(_16to17);
+            service.AddTimeSlot(_17to18);
+            service.AddTimeSlot(_18to19);
+            service.AddTimeSlot(_19to20);
 
-            newLocation.bookedBy.Add(society1);
 
-            service.UpdateLocation(location1.Id, newLocation);
 
-            Console.WriteLine(newLocation.bookedBy.FirstOrDefault().Cvr);
+            #endregion
+
+            service.AddMemberToSociety(society2, member2);
+            service.AddMemberToSociety(society3, member3);
+            service.AddMemberToSociety(society2, member3);
+
+            service.CreateBooking(location1, society1, _16to17);
         }
     }
 }

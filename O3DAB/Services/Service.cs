@@ -36,6 +36,22 @@ namespace O3DAB.Services
             _timeSlots = database.GetCollection<TimeSlot>(tcollection);
             _keys = database.GetCollection<Key>(kcollection);
         }
+
+        public void setChairman(Society society, Member member)
+        {
+        
+            Society newSociety = GetSociety(society.Id);
+
+            newSociety.ChairmanId = member.Id;
+
+            UpdateSociety(society.Id, newSociety);
+        }
+
+        public TimeSlot AddTimeSlot(TimeSlot timeSlot)
+        {
+            _timeSlots.InsertOne(timeSlot);
+            return timeSlot;
+        }
         public Location AddLocation(Location location)
         {
             _locations.InsertOne(location);
@@ -103,6 +119,45 @@ namespace O3DAB.Services
         public void UpdateLocation(ObjectId id, Location newLocation)
         {
             _locations.ReplaceOne(l => l.Id == id, newLocation);
+        }
+
+        public void UpdateSociety(ObjectId id, Society newSociety)
+        {
+            _societies.ReplaceOne(s => s.Id == id, newSociety);
+        }
+
+        public void AddMemberToSociety(Society society, Member member)
+        {
+
+            Society newSociety = GetSociety(society.Id);
+
+            Console.WriteLine("ALLEZ{0} :", society.Members.Count);
+            if (newSociety.Members.Count == 0)
+            {
+                Console.WriteLine("Kaldt");
+                setChairman(newSociety, member);
+                newSociety.Members.Add(member);
+                UpdateSociety(society.Id, newSociety);
+            }
+            else
+            {
+                newSociety.Members.Add(member);
+
+                UpdateSociety(society.Id, newSociety);
+            }
+
+
+        }
+
+        public void CreateBooking(Location location, Society society, TimeSlot TimeForBooking)
+        {
+            Location newLocation = GetLocation(location.Id);
+
+            newLocation.bookedBy.Add(society);
+            newLocation.TimeForBooking.Add(TimeForBooking);
+
+            UpdateLocation(location.Id, newLocation);
+
         }
     }
 }

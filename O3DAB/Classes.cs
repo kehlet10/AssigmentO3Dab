@@ -29,9 +29,9 @@ namespace O3DAB
         [BsonRepresentation(BsonType.ObjectId)]
         public ObjectId Id { get; set; }
         [BsonElement("From")]
-        public DateTime From { get; set; }
+        public TimeSpan From { get; set; }
         [BsonElement("To")]
-        public DateTime To { get; set; }
+        public TimeSpan To { get; set; }
     }
 
     public class Key
