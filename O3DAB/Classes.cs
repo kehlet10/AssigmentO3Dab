@@ -20,7 +20,6 @@ namespace O3DAB
         public int Capacity { get; set; }
         public List<Society> bookedBy { get; set; }
         public List<TimeSlot> TimeForBooking { get; set; }
-
         public Key key { get; set; }
     }
     public class TimeSlot
@@ -52,7 +51,7 @@ namespace O3DAB
         public string MemberName { get; set; }
         [BsonElement("Address")]
         public string MemberAddress { get; set; }
-        [BsonElement("CPR")]
+        [BsonElement("Cpr")]
         public string Cpr { get; set; }
     }
     public class Society
@@ -60,15 +59,13 @@ namespace O3DAB
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public ObjectId Id { get; set; }
-        [BsonElement("CVR")]
-        public int CVR { get; set; }
+        [BsonElement("Cvr")]
+        public string Cvr { get; set; }
         [BsonElement("Activity")]
         public string Activity { get; set; }
         [BsonElement("MemberCount")]
         public int MemberCount { get; set; }
         public List<Member> Members { get; set; }
-        public int ChairmanId  { get; set; }
+        public ObjectId ChairmanId  { get; set; }
     }
-
-   
 }

@@ -35,7 +35,6 @@ namespace O3DAB.Services
             _societies = database.GetCollection<Society>(scollection);
             _timeSlots = database.GetCollection<TimeSlot>(tcollection);
             _keys = database.GetCollection<Key>(kcollection);
-            
         }
         public Location AddLocation(Location location)
         {
@@ -81,6 +80,24 @@ namespace O3DAB.Services
         public Key GetKey(ObjectId id)
         {
             return _keys.Find<Key>(s => s.Id == id).FirstOrDefault();
+        }
+        public void LocationQuery()
+        {
+            List<Location> locations = new List<Location>();
+            locations = _locations.Find(location => true).ToList();
+            foreach(Location l in locations)
+            {
+                Console.WriteLine("Location Name: " + l.LocationName + ", Location Address: " + l.LocationAddress);
+            }
+        }
+        public void SocietyQuery()
+        {
+            List<Society> societies = new List<Society>();
+            societies = _societies.Find(societies => true).Sort("{CVR: 1}").ToList();
+            foreach(Society s in societies)
+            {
+                Console.WriteLine("Society Activity: " + s.Activity + ", Society Cvr: " + s.Cvr + ", Chairman Id: " + s.ChairmanId + ", Member count: " + s.MemberCount );
+            }
         }
     }
 }

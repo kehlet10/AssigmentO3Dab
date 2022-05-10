@@ -153,29 +153,94 @@ namespace O3DAB
                 Console.WriteLine("Database name:" + db.Name);
             */
             }
-        
+            service1.LocationQuery();
+            service1.SocietyQuery();
         }
         private static void SeedData(Service service)
         {
+            #region LocationSeed
             Location location1 = new Location()
             {
                 LocationName = "Shannon 003B",
                 LocationAddress = "Finlandsgade 22",
                 Capacity = 60,
             };
+            Location location2 = new Location()
+            {
+                LocationName = "Shannon 009A",
+                LocationAddress = "Finlandsgade 22",
+                Capacity = 120,
+            };
+            Location location3 = new Location()
+            {
+                LocationName = "Shannon 003C",
+                LocationAddress = "Finlandsgade 22",
+                Capacity = 50,
+            };
             service.AddLocation(location1);
-            Console.WriteLine(location1.Id);
-
+            service.AddLocation(location2);
+            service.AddLocation(location3);
+            #endregion
+            #region MemberSeed
             Member member1 = new Member()
             {
                 MemberName = "Michelle",
                 MemberAddress = "Precipice of Fate",
                 Cpr = "1234567890"
             };
+            Member member2 = new Member()
+            {
+                MemberName = "Maggi",
+                MemberAddress = "Randers",
+                Cpr = "1092387456"
+            };
+            Member member3 = new Member()
+            {
+                MemberName = "Daniela",
+                MemberAddress = "Nordcenter Stor",
+                Cpr = "5678912340"
+            };
+            Member member4 = new Member()
+            {
+                MemberName = "Andrea",
+                MemberAddress = "Åen",
+                Cpr = "5678901234"
+            };
             service.AddMember(member1);
+            service.AddMember(member2);
+            service.AddMember(member3);
+            service.AddMember(member4);
             Console.WriteLine(member1.MemberName);
             Console.WriteLine(location1.Id + " " + member1.Id);
+            #endregion
+            #region SocietySeed
+            Society society1 = new Society()
+            {
+                Cvr = "32345678",
+                Activity = "Armlægning",
+                MemberCount = 2,
+                ChairmanId = service.GetMember(member1.Id).Id
+            };
+            Society society2 = new Society()
+            {
+                Cvr = "1213215",
+                Activity = "Brolægning",
+                MemberCount = 3,
+                ChairmanId = service.GetMember(member2.Id).Id
 
+            };
+            Society society3 = new Society()
+            {
+                Cvr = "5423734",
+                Activity = "Fodbold",
+                MemberCount = 22,
+                ChairmanId = service.GetMember(member3.Id).Id
+            };
+            service.AddSociety(society1);
+            service.AddSociety(society2);
+            service.AddSociety(society3);
+            #endregion
+            #region KeySeed
             Key key1 = new Key()
             {
                 LocationId = service.GetLocation(location1.Id).Id,
@@ -183,7 +248,7 @@ namespace O3DAB
             };
             service.AddKey(key1);
             Console.WriteLine(key1.LocationId + " " + key1.MemberId);
+            #endregion
         }
     }
-
 }
