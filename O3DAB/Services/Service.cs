@@ -61,7 +61,7 @@ namespace O3DAB.Services
         }
         public Member GetMember(ObjectId id)
         {
-            return _members.Find<Member>(s => s.Id == id).FirstOrDefault();
+            return _members.Find<Member>(m => m.Id == id).FirstOrDefault();
         }
         public TimeSlot AddTimeSlots(TimeSlot timeSlot)
         {
@@ -70,7 +70,7 @@ namespace O3DAB.Services
         }
         public TimeSlot GetTimeSlot(ObjectId id)
         {
-            return _timeSlots.Find<TimeSlot>(s => s.Id == id).FirstOrDefault();
+            return _timeSlots.Find<TimeSlot>(t => t.Id == id).FirstOrDefault();
         }
         public Key AddKey(Key key)
         {
@@ -79,7 +79,7 @@ namespace O3DAB.Services
         }
         public Key GetKey(ObjectId id)
         {
-            return _keys.Find<Key>(s => s.Id == id).FirstOrDefault();
+            return _keys.Find<Key>(k => k.Id == id).FirstOrDefault();
         }
         public void LocationQuery()
         {
@@ -93,11 +93,16 @@ namespace O3DAB.Services
         public void SocietyQuery()
         {
             List<Society> societies = new List<Society>();
-            societies = _societies.Find(societies => true).Sort("{CVR: 1}").ToList();
+            societies = _societies.Find(societies => true).Sort("{Activity: 1}").ToList();
             foreach(Society s in societies)
             {
                 Console.WriteLine("Society Activity: " + s.Activity + ", Society Cvr: " + s.Cvr + ", Chairman Id: " + s.ChairmanId + ", Member count: " + s.MemberCount );
             }
+        }
+
+        public void UpdateLocation(ObjectId id, Location newLocation)
+        {
+            _locations.ReplaceOne(l => l.Id == id, newLocation);
         }
     }
 }

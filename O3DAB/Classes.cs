@@ -22,6 +22,7 @@ namespace O3DAB
         public List<TimeSlot> TimeForBooking { get; set; }
         public Key key { get; set; }
     }
+
     public class TimeSlot
     {
         [BsonId]
@@ -32,6 +33,7 @@ namespace O3DAB
         [BsonElement("To")]
         public DateTime To { get; set; }
     }
+
     public class Key
     {
         [BsonId]
@@ -54,6 +56,7 @@ namespace O3DAB
         [BsonElement("Cpr")]
         public string Cpr { get; set; }
     }
+
     public class Society
     {
         [BsonId]
@@ -68,4 +71,5 @@ namespace O3DAB
         public List<Member> Members { get; set; }
         public ObjectId ChairmanId  { get; set; }
     }
+
 }
