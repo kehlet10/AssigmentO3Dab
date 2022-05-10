@@ -164,18 +164,21 @@ namespace O3DAB
                 LocationName = "Shannon 003B",
                 LocationAddress = "Finlandsgade 22",
                 Capacity = 60,
+                bookedBy = new List<Society>()
             };
             Location location2 = new Location()
             {
                 LocationName = "Shannon 009A",
                 LocationAddress = "Finlandsgade 22",
                 Capacity = 120,
+                bookedBy = new List<Society>()
             };
             Location location3 = new Location()
             {
                 LocationName = "Shannon 003C",
                 LocationAddress = "Finlandsgade 22",
                 Capacity = 50,
+                bookedBy = new List<Society>()
             };
             service.AddLocation(location1);
             service.AddLocation(location2);
@@ -249,6 +252,15 @@ namespace O3DAB
             service.AddKey(key1);
             Console.WriteLine(key1.LocationId + " " + key1.MemberId);
             #endregion
+
+
+            Location newLocation = service.GetLocation(location1.Id);
+
+            newLocation.bookedBy.Add(society1);
+
+            service.UpdateLocation(location1.Id, newLocation);
+
+            Console.WriteLine(newLocation.bookedBy.FirstOrDefault().Cvr);
         }
     }
 }

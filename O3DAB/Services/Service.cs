@@ -99,5 +99,10 @@ namespace O3DAB.Services
                 Console.WriteLine("Society Activity: " + s.Activity + ", Society Cvr: " + s.Cvr + ", Chairman Id: " + s.ChairmanId + ", Member count: " + s.MemberCount );
             }
         }
+
+        public void UpdateLocation(ObjectId id, Location newLocation)
+        {
+            _locations.ReplaceOne(l => l.Id == id, newLocation);
+        }
     }
 }
