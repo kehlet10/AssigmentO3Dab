@@ -93,7 +93,7 @@ namespace O3DAB.Services
         public void SocietyQuery()
         {
             List<Society> societies = new List<Society>();
-            societies = _societies.Find(societies => true).Sort("{CVR: 1}").ToList();
+            societies = _societies.Find(societies => true).Sort("{Activity: 1}").ToList();
             foreach(Society s in societies)
             {
                 Console.WriteLine("Society Activity: " + s.Activity + ", Society Cvr: " + s.Cvr + ", Chairman Id: " + s.ChairmanId + ", Member count: " + s.MemberCount );
