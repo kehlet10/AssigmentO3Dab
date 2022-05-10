@@ -39,12 +39,9 @@ namespace O3DAB.Services
 
         public void setChairman(Society society, Member member)
         {
-        
-            Society newSociety = GetSociety(society.Id);
+            society.ChairmanId = member.Id;
 
-            newSociety.ChairmanId = member.Id;
-
-            UpdateSociety(society.Id, newSociety);
+            UpdateSociety(society.Id, society);
         }
 
         public TimeSlot AddTimeSlot(TimeSlot timeSlot)
@@ -131,10 +128,8 @@ namespace O3DAB.Services
 
             Society newSociety = GetSociety(society.Id);
 
-            Console.WriteLine("ALLEZ{0} :", society.Members.Count);
             if (newSociety.Members.Count == 0)
             {
-                Console.WriteLine("Kaldt");
                 setChairman(newSociety, member);
                 newSociety.Members.Add(member);
                 UpdateSociety(society.Id, newSociety);
@@ -145,8 +140,6 @@ namespace O3DAB.Services
 
                 UpdateSociety(society.Id, newSociety);
             }
-
-
         }
 
         public void CreateBooking(Location location, Society society, TimeSlot TimeForBooking)
@@ -157,7 +150,6 @@ namespace O3DAB.Services
             newLocation.TimeForBooking.Add(TimeForBooking);
 
             UpdateLocation(location.Id, newLocation);
-
         }
     }
 }
