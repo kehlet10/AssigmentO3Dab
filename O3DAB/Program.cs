@@ -18,7 +18,15 @@ namespace O3DAB
             var service1 = new Service();
             Console.WriteLine("Seeding dummy data...");
             SeedData(service1);
+
+            Console.WriteLine("\nQuery for Locations in the Municipality:");
+            service1.LocationQuery();
+            Console.WriteLine("\nQuery for all Societies in the Municipality:");
+            service1.SocietyQuery();
+
+            service1.PrintMemberBookings();
         }
+
         private static void SeedData(Service service)
         {
             #region LocationSeed
@@ -51,34 +59,34 @@ namespace O3DAB
             service.AddLocation(location3);
             #endregion
             #region MemberSeed
-            Member member1 = new Member()
+            Member Michelle = new Member()
             {
                 MemberName = "Michelle",
                 MemberAddress = "Precipice of Fate",
                 Cpr = "1234567890"
             };
-            Member member2 = new Member()
+            Member Maggi = new Member()
             {
                 MemberName = "Maggi",
                 MemberAddress = "Randers",
                 Cpr = "1092387456"
             };
-            Member member3 = new Member()
+            Member Daniela = new Member()
             {
                 MemberName = "Daniela",
                 MemberAddress = "Nordcenter Stor",
                 Cpr = "5678912340"
             };
-            Member member4 = new Member()
+            Member Andrea = new Member()
             {
                 MemberName = "Andrea",
                 MemberAddress = "Åen",
                 Cpr = "5678901234"
             };
-            service.AddMember(member1);
-            service.AddMember(member2);
-            service.AddMember(member3);
-            service.AddMember(member4);
+            service.AddMember(Michelle);
+            service.AddMember(Maggi);
+            service.AddMember(Daniela);
+            service.AddMember(Andrea);
             #endregion
             #region SocietySeed
             Society society1 = new Society()
@@ -114,7 +122,7 @@ namespace O3DAB
             Key key1 = new Key()
             {
                 LocationId = service.GetLocation(location1.Id).Id,
-                MemberId = service.GetMember(member1.Id).Id
+                MemberId = service.GetMember(Michelle.Id).Id
             };
             service.AddKey(key1);
             #endregion
@@ -199,9 +207,10 @@ namespace O3DAB
 
             #endregion
 
-            service.AddMemberToSociety(society2, member2);
-            service.AddMemberToSociety(society3, member3);
-            service.AddMemberToSociety(society2, member3);
+            service.AddMemberToSociety(society2, Michelle);
+            service.AddMemberToSociety(society3, Maggi);
+            service.AddMemberToSociety(society2, Daniela);
+            service.AddMemberToSociety(society1, Andrea);
 
             service.CreateBooking(location1, society1, _16to17);
             service.CreateBooking(location2, society2, _16to17);
@@ -211,15 +220,10 @@ namespace O3DAB
             //Create booking that is unavailable
             service.CreateBooking(location1, society2, _16to17);
 
-            Console.WriteLine("\nQuery for Locations in the Municipality:");
-            service.LocationQuery();
-            Console.WriteLine("\nQuery for all Societies in the Municipality:");
-            service.SocietyQuery();
-
             //Should print 2 bookings
-            service.PrintBookings(society1);
+            //service.PrintBookings(society1);
 
-            service.PrintMemberBookings(member3);
+            
         }
     }
 }

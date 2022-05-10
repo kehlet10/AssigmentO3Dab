@@ -173,12 +173,15 @@ namespace O3DAB.Services
         public void PrintBookings(Society society)
         {
             List<Location> locations = _locations.Find<Location>(l => l.bookedBy.Any(s => s.Id == society.Id)).ToList();
-            Console.WriteLine("\nCVR: " + society.Cvr + " has following bookings:");
+            Console.WriteLine("Society with CVR: " + society.Cvr + " has following bookings:");
 
             foreach (Location l in locations)
             {
                 List<TimeSlot> ts = l.TimeForBooking.ToList();
-                Console.WriteLine(l.LocationName);
+                
+                Console.WriteLine("Location Name: " + l.LocationName);
+                Console.WriteLine("Location Address: " + l.LocationAddress);
+                Console.WriteLine("Capacity: " + l.Capacity);
 
                 var index = l.bookedBy.FindIndex(s => s.Id == society.Id);
                 for(int i = 0; i < l.TimeForBooking.Count; i++)
@@ -188,18 +191,49 @@ namespace O3DAB.Services
                         Console.WriteLine(l.TimeForBooking[i].From + " to " + l.TimeForBooking[i].To);
                     }
                 }
+                Console.WriteLine("\n");
             }
         }
 
-        public void PrintMemberBookings(Member member)
+        public void PrintMemberBookings()
         {
-            Console.WriteLine("\nQuery for member: " + member.MemberName + "'s bookings.");
-            List<Society> societies = _societies.Find<Society>(s => s.Members.Any(m => m.Id == member.Id)).ToList();
-
-            foreach (Society s2 in societies)
+            List<Member> chairmen = getChairman();
+            foreach(Member SocietyChairmen in chairmen)
             {
-                PrintBookings(s2);
+                Console.WriteLine("\nQuery for key-responsible Chairman: " + SocietyChairmen.MemberName + "'s bookings.");
+                List<Society> societies = _societies.Find<Society>(s => s.Members.Any(m => m.Id == SocietyChairmen.Id)).ToList();
+
+                foreach (Society s2 in societies)
+                {
+                    PrintBookings(s2);
+                }
             }
+            
+        }
+
+        public List<Member> getChairman()
+        {
+            List<Member> members = _members.Find(members => true).ToList();
+            List<Society> societies = _societies.Find(societies => true).ToList();
+            List<Member> chairmen = new List<Member>();
+            Member chairMan = new Member();
+
+            foreach ( Member member in members)
+            {
+                foreach (Society society in societies)
+                {
+                    if (member.Id == society.ChairmanId)
+                    {
+                        chairmen.Add(member);
+                    }
+                }
+            }
+            return chairmen;
+        }
+
+        public void KeyResponsibleBookings() //KeyResponsible = Chairman
+        {
+
         }
 
     }
