@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\andre\\IKT\\DAB\\DAB Gruppe 9\\Assignment3O3Dab\\AssigmentO3Dab\\O3DAB\\O3DAB.csproj": {}
+    "C:\\Users\\Danie\\OneDrive\\Dokumenter\\GitHub\\AssigmentO3Dab\\O3DAB\\O3DAB.csproj": {}
   },
   "projects": {
-    "C:\\Users\\andre\\IKT\\DAB\\DAB Gruppe 9\\Assignment3O3Dab\\AssigmentO3Dab\\O3DAB\\O3DAB.csproj": {
+    "C:\\Users\\Danie\\OneDrive\\Dokumenter\\GitHub\\AssigmentO3Dab\\O3DAB\\O3DAB.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\andre\\IKT\\DAB\\DAB Gruppe 9\\Assignment3O3Dab\\AssigmentO3Dab\\O3DAB\\O3DAB.csproj",
+        "projectUniqueName": "C:\\Users\\Danie\\OneDrive\\Dokumenter\\GitHub\\AssigmentO3Dab\\O3DAB\\O3DAB.csproj",
         "projectName": "O3DAB",
-        "projectPath": "C:\\Users\\andre\\IKT\\DAB\\DAB Gruppe 9\\Assignment3O3Dab\\AssigmentO3Dab\\O3DAB\\O3DAB.csproj",
-        "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\andre\\IKT\\DAB\\DAB Gruppe 9\\Assignment3O3Dab\\AssigmentO3Dab\\O3DAB\\obj\\",
+        "projectPath": "C:\\Users\\Danie\\OneDrive\\Dokumenter\\GitHub\\AssigmentO3Dab\\O3DAB\\O3DAB.csproj",
+        "packagesPath": "C:\\Users\\Danie\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Danie\\OneDrive\\Dokumenter\\GitHub\\AssigmentO3Dab\\O3DAB\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -76,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }
