@@ -24,6 +24,10 @@ namespace O3DAB
             Console.WriteLine("\nQuery for all Societies in the Municipality:");
             service1.SocietyQuery();
 
+            Console.WriteLine("\nQuery 3");
+            service1.PrintSocietyBookings();
+
+            Console.WriteLine("\nQuery for key - responsible Chairman:") ;
             service1.PrintMemberBookings();
         }
 
@@ -121,10 +125,27 @@ namespace O3DAB
             #region KeySeed
             Key key1 = new Key()
             {
+                LocationId = service.GetLocation(location2.Id).Id,
+                //MemberId = service.GetMember(Michelle.Id).Id
+            };
+            Key key2 = new Key()
+            {
+                LocationId = service.GetLocation(location3.Id).Id,
+                //MemberId = service.GetMember(Maggi.Id).Id
+            };
+            Key key3 = new Key()
+            {
                 LocationId = service.GetLocation(location1.Id).Id,
-                MemberId = service.GetMember(Michelle.Id).Id
+                //MemberId = service.GetMember(Andrea.Id).Id
             };
             service.AddKey(key1);
+            service.AddKey(key2);
+            service.AddKey(key3);
+
+            service.AddKeyToLocation(key1);
+            service.AddKeyToLocation(key2);
+            service.AddKeyToLocation(key3);
+
             #endregion
             #region TimeSlotSeed
 

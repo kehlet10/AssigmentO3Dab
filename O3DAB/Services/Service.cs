@@ -117,6 +117,14 @@ namespace O3DAB.Services
         {
             _locations.ReplaceOne(l => l.Id == id, newLocation);
         }
+        public void AddKeyToLocation(Key key)
+        {
+            Location newLocation = GetLocation(key.LocationId);
+
+            newLocation.key = key;
+
+            UpdateLocation(key.LocationId, newLocation);
+        }
 
         public void UpdateSociety(ObjectId id, Society newSociety)
         {
@@ -170,15 +178,19 @@ namespace O3DAB.Services
                 UpdateLocation(location.Id, newLocation);
             }
         }
-        public void PrintBookings(Society society)
+        public void PrintBookings(Society society, bool check)
         {
             List<Location> locations = _locations.Find<Location>(l => l.bookedBy.Any(s => s.Id == society.Id)).ToList();
+            //List<Key> keys = _keys.Find<Key>(k => k.MemberId == society.ChairmanId).ToList();
+
+            Console.WriteLine("\n");
             Console.WriteLine("Society with CVR: " + society.Cvr + " has following bookings:");
 
             foreach (Location l in locations)
             {
                 List<TimeSlot> ts = l.TimeForBooking.ToList();
-                
+
+                Console.WriteLine("\n");
                 Console.WriteLine("Location Name: " + l.LocationName);
                 Console.WriteLine("Location Address: " + l.LocationAddress);
                 Console.WriteLine("Capacity: " + l.Capacity);
@@ -191,24 +203,39 @@ namespace O3DAB.Services
                         Console.WriteLine(l.TimeForBooking[i].From + " to " + l.TimeForBooking[i].To);
                     }
                 }
+
+                if (check == true)
+                {       
+                Console.WriteLine("Access information:\nKey Id: " + l.key.Id);
                 Console.WriteLine("\n");
+                    
+                }
             }
         }
+        public void PrintSocietyBookings()
+        {
+            List<Society> societies = new List<Society>();
+            societies = _societies.Find(societies => true).ToList();
 
+            foreach (Society s in societies)
+            {
+                PrintBookings(s, false);
+            }         
+        }
         public void PrintMemberBookings()
         {
             List<Member> chairmen = getChairman();
             foreach(Member SocietyChairmen in chairmen)
             {
-                Console.WriteLine("\nQuery for key-responsible Chairman: " + SocietyChairmen.MemberName + "'s bookings.");
+                Console.WriteLine(SocietyChairmen.MemberName + "'s bookings.");
                 List<Society> societies = _societies.Find<Society>(s => s.Members.Any(m => m.Id == SocietyChairmen.Id)).ToList();
+                //List<Key> keys = _keys.Find<Key>(k => k.MemberId == SocietyChairmen.Id).ToList();
 
                 foreach (Society s2 in societies)
                 {
-                    PrintBookings(s2);
+                    PrintBookings(s2, check: true);
                 }
-            }
-            
+            }            
         }
 
         public List<Member> getChairman()
@@ -230,11 +257,5 @@ namespace O3DAB.Services
             }
             return chairmen;
         }
-
-        public void KeyResponsibleBookings() //KeyResponsible = Chairman
-        {
-
-        }
-
     }
 }
