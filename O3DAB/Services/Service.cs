@@ -181,10 +181,16 @@ namespace O3DAB.Services
         public void PrintBookings(Society society, bool check)
         {
             List<Location> locations = _locations.Find<Location>(l => l.bookedBy.Any(s => s.Id == society.Id)).ToList();
-            //List<Key> keys = _keys.Find<Key>(k => k.MemberId == society.ChairmanId).ToList();
-
-            Console.WriteLine("\n");
-            Console.WriteLine("Society with CVR: " + society.Cvr + " has following bookings:");
+            Member chairman = new Member();
+            chairman = GetMember(society.ChairmanId);
+            if(check != true)
+            {
+                Console.WriteLine("Society with CVR: " + society.Cvr + " and chairman: " + chairman.MemberName + ", has following bookings:");
+            }
+            else
+            {
+                Console.WriteLine("Society with CVR: " + society.Cvr + " has following bookings:");
+            }
 
             foreach (Location l in locations)
             {
@@ -203,6 +209,7 @@ namespace O3DAB.Services
                         Console.WriteLine(l.TimeForBooking[i].From + " to " + l.TimeForBooking[i].To);
                     }
                 }
+                Console.WriteLine("\n");
 
                 if (check == true)
                 {       
@@ -229,7 +236,6 @@ namespace O3DAB.Services
             {
                 Console.WriteLine(SocietyChairmen.MemberName + "'s bookings.");
                 List<Society> societies = _societies.Find<Society>(s => s.Members.Any(m => m.Id == SocietyChairmen.Id)).ToList();
-                //List<Key> keys = _keys.Find<Key>(k => k.MemberId == SocietyChairmen.Id).ToList();
 
                 foreach (Society s2 in societies)
                 {

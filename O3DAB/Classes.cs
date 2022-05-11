@@ -41,8 +41,6 @@ namespace O3DAB
         public ObjectId Id { get; set; }
         [BsonElement("LocationId")]
         public ObjectId LocationId { get; set; }
-        //[BsonElement("MemberId")]
-        //public ObjectId MemberId { get; set; }
     }
     public class Member
     {

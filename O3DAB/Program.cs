@@ -19,15 +19,15 @@ namespace O3DAB
             Console.WriteLine("Seeding dummy data...");
             SeedData(service1);
 
-            Console.WriteLine("\nQuery for Locations in the Municipality:");
+            Console.WriteLine("\n[[ QUERY 1 ]]\nLocations in the Municipality:\n");
             service1.LocationQuery();
-            Console.WriteLine("\nQuery for all Societies in the Municipality:");
+            Console.WriteLine("\n[[ QUERY 2 ]]\nAll Societies in the Municipality:\n");
             service1.SocietyQuery();
 
-            Console.WriteLine("\nQuery 3");
+            Console.WriteLine("\n[[ QUERY 3 ]]\nList of booked locations and the times they are booked:\n");
             service1.PrintSocietyBookings();
 
-            Console.WriteLine("\nQuery for key - responsible Chairman:") ;
+            Console.WriteLine("\n[[ QUERY 4 ]]\nBooking sorted by key-responsible members:\n") ;
             service1.PrintMemberBookings();
         }
 
@@ -125,18 +125,15 @@ namespace O3DAB
             #region KeySeed
             Key key1 = new Key()
             {
-                LocationId = service.GetLocation(location2.Id).Id,
-                //MemberId = service.GetMember(Michelle.Id).Id
+                LocationId = service.GetLocation(location2.Id).Id
             };
             Key key2 = new Key()
             {
-                LocationId = service.GetLocation(location3.Id).Id,
-                //MemberId = service.GetMember(Maggi.Id).Id
+                LocationId = service.GetLocation(location3.Id).Id
             };
             Key key3 = new Key()
             {
-                LocationId = service.GetLocation(location1.Id).Id,
-                //MemberId = service.GetMember(Andrea.Id).Id
+                LocationId = service.GetLocation(location1.Id).Id
             };
             service.AddKey(key1);
             service.AddKey(key2);
@@ -239,12 +236,7 @@ namespace O3DAB
             service.CreateBooking(location2, society1, _17to18);
 
             //Create booking that is unavailable
-            service.CreateBooking(location1, society2, _16to17);
-
-            //Should print 2 bookings
-            //service.PrintBookings(society1);
-
-            
+            service.CreateBooking(location1, society2, _16to17);            
         }
     }
 }
